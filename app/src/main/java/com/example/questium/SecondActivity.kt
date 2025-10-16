@@ -3,13 +3,14 @@ package com.example.questium
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.SeekBar
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-var score = 0;
+var score = 0
 
 class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,22 +23,35 @@ class SecondActivity : AppCompatActivity() {
             insets
         }
 
-        var logoutBtn = findViewById<Button>(R.id.btnLogout)
+        val logoutBtn = findViewById<Button>(R.id.btnLogout)
         logoutBtn.setOnClickListener {
-            logout();
+            logout()
         }
 
-        var pointsTV = findViewById<TextView>(R.id.tvPoints)
-        var plusBtn = findViewById<Button>(R.id.btnPlus)
-        var minusBtn = findViewById<Button>(R.id.btnMinus)
+        val pointsTV = findViewById<TextView>(R.id.tvPoints)
+        val plusBtn = findViewById<Button>(R.id.btnPlus)
+        val minusBtn = findViewById<Button>(R.id.btnMinus)
 
         plusBtn.setOnClickListener { add(pointsTV) }
         minusBtn.setOnClickListener { minusOne(pointsTV) }
+
+        val seekbar = findViewById<SeekBar>(R.id.seekbar)
+        val voteTV = findViewById<TextView>(R.id.tvVote)
+
+        seekbar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekbar: SeekBar?, progress: Int, fromUser: Boolean) {
+                val voto = progress - 5
+                voteTV.text = "$voto"
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) { }
+            override fun onStopTrackingTouch(seekBar: SeekBar?) { }
+        })
     }
 
     fun logout() {
         val intent = Intent(this, MainActivity::class.java);
-        startActivity(intent);
+        startActivity(intent)
     }
 
     fun add(pts: TextView) {
