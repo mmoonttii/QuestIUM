@@ -40,8 +40,7 @@ class SecondActivity : AppCompatActivity() {
 
         seekbar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekbar: SeekBar?, progress: Int, fromUser: Boolean) {
-                val voto = progress - 5
-                voteTV.text = "$voto"
+                voteTV.text = "${progress - 5}"
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) { }
