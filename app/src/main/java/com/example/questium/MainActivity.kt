@@ -2,7 +2,10 @@ package com.example.questium
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,14 +22,29 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        var loginBtn = findViewById<Button>(R.id.btnLogin)
+        val usernameEt = findViewById<EditText>(R.id.etUsername)
+        val passwordEt = findViewById<EditText>(R.id.etPassword)
+
+        val loginBtn = findViewById<Button>(R.id.btnLogin)
         loginBtn.setOnClickListener {
-            login();
+            if (GlobalData.user_list.any {
+                    it.username == usernameEt.text.toString() && it.password == passwordEt.text.toString()
+                })
+                login()
+            else
+                Log.i("Monti", "User not found")
         }
+
+        val registerTv = findViewById<TextView>(R.id.tvRegister)
+        registerTv.setOnClickListener { register() }
     }
 
     fun login(){
         val intent = Intent(this, SecondActivity::class.java);
+        startActivity(intent);
+    }
+    fun register(){
+        val intent = Intent(this, RegisterActivity::class.java);
         startActivity(intent);
     }
 }
