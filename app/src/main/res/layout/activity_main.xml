@@ -31,8 +31,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/tvErrorLoginText"
+            android:textColor="@color/red"
+            android:text="Username o password errati"
+            android:visibility="invisible"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginLeft="70dp"
+            android:id="@+id/tvUsername"
             android:text="Username"
             />
 
@@ -50,6 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginLeft="70dp"
+            android:id="@+id/tvPassword"
             android:text="Password"
             />
 

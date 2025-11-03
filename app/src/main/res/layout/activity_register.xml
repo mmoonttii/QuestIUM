@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Registrazione"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/tvWelcome"
         />
 
@@ -49,13 +49,29 @@
         android:id="@+id/etEmail"
         />
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password"
+        android:orientation="horizontal"
         android:layout_gravity="left"
-        android:layout_marginLeft="70dp"
-        />
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:layout_gravity="left"
+            android:layout_marginLeft="70dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" \?"
+            android:textStyle="bold"
+            android:textColor="@color/cobalt"
+            android:id="@+id/tvPasswordTooltip"
+            />
+    </LinearLayout>
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,6 +79,22 @@
         android:hint="Scegli una password"
         android:inputType="textPassword"
         android:id="@+id/etPassword"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Conferma Password"
+        android:layout_gravity="left"
+        android:layout_marginLeft="70dp"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Reinserisci la password"
+        android:inputType="textPassword"
+        android:id="@+id/etConfirmPassword"
         />
 
     <TextView
