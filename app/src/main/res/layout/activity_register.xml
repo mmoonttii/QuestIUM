@@ -120,7 +120,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Accetto i termini di servizio"
-        android:buttonTint="@color/cobalt"
+        app:buttonTint="@color/cobalt"
         android:id="@+id/cbTos"
         />
 

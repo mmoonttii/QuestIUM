@@ -3,12 +3,15 @@ package com.example.questium
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 var score = 0
 
@@ -46,6 +49,29 @@ class SecondActivity : AppCompatActivity() {
             override fun onStartTrackingTouch(seekBar: SeekBar?) { }
             override fun onStopTrackingTouch(seekBar: SeekBar?) { }
         })
+
+        val taskList = mutableListOf<Task>()
+        val newTaskBtn = findViewById<Button>(R.id.btnAddTask)
+        val newTaskEt = findViewById<EditText>(R.id.etNewTask)
+        val recyclerView = findViewById<RecyclerView>(R.id.rvTask)
+        val taskCounterTv = findViewById<TextView>(R.id.tvTaskCounter)
+
+        recyclerView.adapter = TaskAdapter(taskList, taskCounterTv)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        newTaskBtn.setOnClickListener {
+            val taskDescription = newTaskEt.text.toString()
+            taskList.add(Task(taskDescription, false))
+            recyclerView.adapter?.notifyItemInserted(taskList.size - 1)
+        }
+
+        val clearTasksBtn = findViewById<Button>(R.id.btnClearTasks)
+        clearTasksBtn.setOnClickListener {
+            taskList.removeAll { it.isCompleted }
+            recyclerView.adapter?.notifyDataSetChanged()
+        }
+
+
     }
 
     fun logout() {
@@ -57,8 +83,10 @@ class SecondActivity : AppCompatActivity() {
         score++
         pts.text = "Punti esperienza: $score"
     }
+
     fun minusOne(pts: TextView) {
         if (score > 0) score--
         pts.text = "Punti esperienza: $score"
     }
+
 }

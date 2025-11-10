@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         val passwordTv = findViewById<TextView>(R.id.tvPassword)
         val registerTv = findViewById<TextView>(R.id.tvRegister)
 
-        loginBtn.isEnabled = false;
+        loginBtn.isEnabled = false
         loginBtn.alpha = 0.3f
 
         loginBtn.setOnClickListener {
@@ -75,14 +75,14 @@ class MainActivity : AppCompatActivity() {
 
             Log.i("Monti", "User not found")
         } else {
-            val intent = Intent(this, SecondActivity::class.java);
-            startActivity(intent);
+            val intent = Intent(this, SecondActivity::class.java)
+            startActivity(intent)
         }
     }
 
     fun register(){
-        val intent = Intent(this, RegisterActivity::class.java);
-        startActivity(intent);
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
     }
 
     fun watcher(loginBtn : Button, usernameEt : EditText, passwordEt : EditText) {
