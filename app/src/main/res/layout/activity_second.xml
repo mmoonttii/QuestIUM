@@ -8,6 +8,14 @@
     tools:context=".SecondActivity"
     android:orientation="vertical"
     >
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@color/cobalt"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:title="@string/app_name"
+        />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,6 +45,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
+            <ImageButton
+                style="@style/Theme.QuestIUM.BaseButton"
+                android:id="@+id/ibSelectAll"
+                android:src="@drawable/baseline_checklist_24"
+                />
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -76,15 +89,13 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/Theme.QuestIUM.BaseButton"
+            style="@style/Theme.QuestIUM.RedButton"
             android:text="Elimina attività completate"
             android:id="@+id/btnClearTasks"
             android:textSize="16sp"
             />
 
     </LinearLayout>
-
-
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -116,34 +127,4 @@
         android:layout_height="100dp"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Quanto sei soddisfatto oggi da -5 a 5?"
-        android:textColor="@color/cobalt"
-        android:layout_marginStart="10sp"
-        android:layout_marginEnd="10sp"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textColor="@color/cobalt"
-        android:id="@+id/tvVote"
-        android:layout_marginTop="20dp"
-        />
-    <SeekBar
-        style="@style/Theme.QuestIUM.SeekBar"
-        android:id="@+id/seekbar"
-        android:max="10"
-        android:progress="5"
-        android:layout_marginTop="50dp"
-        />
-
-    <Button
-        style="@style/Theme.QuestIUM.RedButton"
-        android:layout_marginTop="50dp"
-        android:text="Logout"
-        android:id="@+id/btnLogout"
-        />
 </LinearLayout>

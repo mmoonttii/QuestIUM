@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -15,6 +16,7 @@ class TaskAdapter(
     class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val task = itemView.findViewById<TextView>(R.id.tvTask)
         val checkbox = itemView.findViewById<CheckBox>(R.id.cbTask)
+        val clear = itemView.findViewById<ImageButton>(R.id.ibClear)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
@@ -38,6 +40,12 @@ class TaskAdapter(
                     holder.task.paintFlags = 0
                     currentTask.isCompleted = false
                 }
+            updateCount()
+        }
+
+        holder.clear.setOnClickListener {
+            taskList.removeAt(position)
+            notifyDataSetChanged()
             updateCount()
         }
     }

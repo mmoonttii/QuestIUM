@@ -26,6 +26,9 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        val newUser = User("admin", "", "admin", "01/01/2001")
+        GlobalData.user_list.add(newUser)
+
         val usernameEt = findViewById<EditText>(R.id.etUsername)
         val passwordEt = findViewById<EditText>(R.id.etPassword)
         val errorLoginTv = findViewById<TextView>(R.id.tvErrorLoginText)
